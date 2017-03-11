@@ -1,0 +1,174 @@
+﻿<Page
+    x:Class="CalculatorX.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CalculatorX"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:c="MyModule3App"
+    mc:Ignorable="d">
+
+    <!--<Page.Resources>
+        <c:MyButtonData x:Key="myDataSource"/>
+    </Page.Resources>
+    <Page.DataContext>
+        <Binding Source="{StaticResource myDataSource}"/>
+    </Page.DataContext>  -->
+
+    <Grid>
+
+        <RelativePanel x:Name="FullScreen" Visibility="Visible" Background="#FF89FF8F">
+            <RelativePanel x:Name="DisplayPanel" HorizontalAlignment="Left" Height="100" Margin="140,50,-1280,-130" VerticalAlignment="Top" Width="1000">
+                <TextBox 
+            		x:Name="textBoxCalcInput"
+            		HorizontalAlignment="Left" 
+            		Height="100"
+            		Margin="0"
+            		TextWrapping="Wrap" 
+            		Text="{Binding Text, ElementName=txtBoxUserDataSmall, Mode=TwoWay}"
+            		VerticalAlignment="Top"
+            		Width="500"
+            		PlaceholderText="Number Input" 
+            		RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignBottomWithPanel="True" FontSize="64" TextAlignment="Left" FontFamily="Consolas" FlowDirection="RightToLeft" Padding="10" IsReadOnly="True"/>
+                <!--Text="{Binding Text, ElementName=textBoxCalcInput}"-->
+                <TextBlock x:Name="textUserData" 
+                           HorizontalAlignment="Left" 
+                           Height="100" 
+                           Margin="0"
+                           TextWrapping="Wrap" 
+                           VerticalAlignment="Top"
+                           Width="500" 
+                           ToolTipService.ToolTip="Answer"
+                           Padding="10" 
+                          
+                           Text="Hello"
+                           TextAlignment="Right" 
+                           FontSize="64"
+                           RelativePanel.AlignLeftWithPanel="True"
+                           RelativePanel.AlignBottomWithPanel="True" 
+                           FontFamily="Consolas" />
+            </RelativePanel>
+            <Grid x:Name="NumberGrid" Height="400" Margin="640,220,-1140,-620" Width="500" RelativePanel.Below="DisplayPanel" RelativePanel.AlignRightWith="DisplayPanel" RelativePanel.AlignLeftWith="DisplayPanel" BorderBrush="Black" BorderThickness="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="btn7" Content="7" HorizontalAlignment="Stretch" Margin="0" VerticalAlignment="Stretch" RenderTransformOrigin="0.545,0.469" FontSize="32" Height="100" Width="100" Click="btn7_Click" BorderBrush="Black"/>
+                <Button x:Name="btn8" Content="8" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.545,0.469" FontSize="32" Height="100" Width="100" Grid.Column="1" Click="btn8_Click" BorderBrush="Black"/>
+                <Button x:Name="btn9" Content="9" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.545,0.469" FontSize="32" Height="100" Width="100" Grid.Column="2" Click="btn9_Click" BorderBrush="Black"/>
+                <Button x:Name="btn4" Content="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.545,0.469" FontSize="32" Height="100" Width="100" Grid.Row="1" Click="btn4_Click" BorderBrush="Black"/>
+                <Button x:Name="btn5" Content="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.545,0.469" FontSize="32" Height="100" Width="100" Grid.Row="1" Grid.Column="1" Click="btn5_Click" BorderBrush="Black"/>
+                <Button x:Name="btn6" Content="6" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.545,0.469" FontSize="32" Height="100" Width="100" Grid.Row="1" Grid.Column="2" Click="btn6_Click" BorderBrush="Black"/>
+                <Button x:Name="btn1" Content="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.545,0.469" FontSize="32" Height="100" Width="100" Grid.Row="2" Click="btn1_Click" BorderBrush="Black"/>
+                <Button x:Name="btn2" Content="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.545,0.469" FontSize="32" Height="100" Width="100" Grid.Row="2" Grid.Column="1" Click="btn2_Click" BorderBrush="Black"/>
+                <Button x:Name="btn3" Content="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.545,0.469" FontSize="32" Height="100" Width="100" Grid.Row="2" Grid.Column="2" Click="btn3_Click" BorderBrush="Black"/>
+                <Button x:Name="btnDecimal" Content="." HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.545,0.469" FontSize="32" Height="100" Width="100" Grid.Row="3" Click="btnDecimal_Click" BorderBrush="Black"/>
+                <Button x:Name="btn0" Content="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.545,0.469" FontSize="32" Height="100" Width="100" Grid.Row="3" Grid.Column="1" Click="btn0_Click" BorderBrush="Black"/>
+                <Button x:Name="btnPi" Content="&#x3c0;" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.545,0.469" FontSize="32" Height="100" Width="100" Grid.Row="3" Grid.Column="2" BorderBrush="Black" Click="btnPi_Click"/>
+                <Button x:Name="btnDel" Content="Del" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.545,0.469" FontSize="32" Height="100" Width="100" Grid.Column="3" Click="btnDel_Click" BorderBrush="Black"/>
+                <Button x:Name="btnAC" Content="AC" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.545,0.469" FontSize="32" Height="100" Width="100" Grid.Column="4" Click="btnAC_Click" BorderBrush="Black"/>
+                <Button x:Name="btnMult" Content="x" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.545,0.469" FontSize="32" Height="100" Width="100" Grid.Row="1" Grid.Column="3" Click="btnMult_Click" BorderBrush="Black"/>
+                <Button x:Name="btnDiv" Content="/" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.545,0.469" FontSize="32" Height="100" Width="100" Grid.Row="1" Grid.Column="4" Click="btnDiv_Click" BorderBrush="Black"/>
+                <Button x:Name="btnPlus" Content="+" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.545,0.469" FontSize="32" Height="100" Width="100" Grid.Row="2" Grid.Column="3" Click="btnPlus_Click" BorderBrush="Black"/>
+                <Button x:Name="btnSub" Content="-" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.545,0.469" FontSize="32" Height="100" Width="100" Grid.Row="2" Grid.Column="4" Click="btnSub_Click" BorderBrush="Black"/>
+                <Button x:Name="btnAns" Content="Ans" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.545,0.469" FontSize="32" Height="100" Width="100" Grid.Row="3" Grid.Column="3" BorderBrush="Black" Click="btnAns_Click"/>
+                <Button x:Name="btnEquals" Content="=" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.545,0.469" FontSize="32" Height="100" Width="100" Grid.Row="3" Grid.Column="4" BorderBrush="Black" Click="btnEquals_Click"/>
+            </Grid>
+            <Grid x:Name="FunctionGrid" Height="400" Margin="140,220,-640,-620" Width="500" RelativePanel.Below="DisplayPanel" RelativePanel.AlignRightWith="DisplayPanel" RelativePanel.AlignLeftWith="DisplayPanel" BorderBrush="Black" BorderThickness="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="btnSin" Content="sin" HorizontalAlignment="Stretch" Margin="0" VerticalAlignment="Stretch" RenderTransformOrigin="0.545,0.469" FontSize="26.667" Height="100" Width="100" Click="btnSin_Click" BorderBrush="Black"/>
+                <Button x:Name="btnCos" Content="cos" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.545,0.469" FontSize="26.667" Height="100" Width="100" Grid.Column="1" Click="btnCos_Click" BorderBrush="Black"/>
+                <Button x:Name="btnTan" Content="tan" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.545,0.469" FontSize="26.667" Height="100" Width="100" Grid.Column="2" Click="btnTan_Click" BorderBrush="Black"/>
+                <Button x:Name="btnAsin" Content="asin" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.545,0.469" FontSize="26.667" Height="100" Width="100" Grid.Row="1" Click="btnAsin_Click" BorderBrush="Black"/>
+                <Button x:Name="btnAcos" Content="acos" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.545,0.469" FontSize="26.667" Height="100" Width="100" Grid.Row="1" Grid.Column="1" Click="btnAcos_Click" BorderBrush="Black"/>
+                <Button x:Name="btnAtan" Content="atan" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.545,0.469" FontSize="26.667" Height="100" Width="100" Grid.Row="1" Grid.Column="2" Click="btnAtan_Click" BorderBrush="Black"/>
+                <Button x:Name="btnPerm" Content="nPr" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.545,0.469" FontSize="26.667" Height="100" Width="100" Grid.Row="2" Click="btnPerm_Click" BorderBrush="Black"/>
+                <Button x:Name="btn10x" Content="x10&#x207f;" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.545,0.469" FontSize="26.667" Height="100" Width="100" Grid.Row="2" Grid.Column="1" Click="btn10x_Click" BorderBrush="Black"/>
+                <Button x:Name="btnExp" Content="e" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.545,0.469" FontSize="26.667" Height="100" Width="100" Grid.Row="2" Grid.Column="2" Click="btnExp_Click" BorderBrush="Black"/>
+                <Button x:Name="btnComb" Content="nCr" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.545,0.469" FontSize="26.667" Height="100" Width="100" Grid.Row="3" Click="btnComb_Click" BorderBrush="Black"/>
+                <Button x:Name="btnLog" Content="log" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.545,0.469" FontSize="26.667" Height="100" Width="100" Grid.Row="3" Grid.Column="1" Click="btnLog_Click" BorderBrush="Black"/>
+                <Button x:Name="btnLn" Content="ln(x)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.545,0.469" FontSize="26.667" Height="100" Width="100" Grid.Row="3" Grid.Column="2" BorderBrush="Black" Click="btnLn_Click"/>
+                <Button x:Name="btnRoot" Content="&#x207f;&#x221a;" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.545,0.469" FontSize="26.667" Height="100" Width="100" Grid.Column="3" Click="btnRoot_Click" BorderBrush="Black"/>
+                <Button x:Name="btnPower" Content="x&#x207f;" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.545,0.469" FontSize="26.667" Height="100" Width="100" Grid.Column="4" Click="btnPower_Click" BorderBrush="Black"/>
+                <Button x:Name="btnSquareRoot" Content="&#x221a;" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.545,0.469" FontSize="26.667" Height="100" Width="100" Grid.Row="1" Grid.Column="3" Click="btnSquareRoot_Click" BorderBrush="Black"/>
+                <Button x:Name="btnSquare" Content="x&#x00B2;" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.545,0.469" FontSize="26.667" Height="100" Width="100" Grid.Row="1" Grid.Column="4" Click="btnSquare_Click" BorderBrush="Black"/>
+                <Button x:Name="btnCubeRoot" Content="&#x221b;" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.545,0.469" FontSize="26.667" Height="100" Width="100" Grid.Row="2" Grid.Column="3" Click="btnCubeRoot_Click" BorderBrush="Black"/>
+                <Button x:Name="btnCubed" Content="x&#x00B3;" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.545,0.469" FontSize="26.667" Height="100" Width="100" Grid.Row="2" Grid.Column="4" Click="btnCubed_Click" BorderBrush="Black"/>
+                <Button x:Name="btnLeftBrace" Content="(" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.545,0.469" FontSize="26.667" Height="100" Width="100" Grid.Row="3" Grid.Column="3" BorderBrush="Black" Click="btnLeftBrace_Click"/>
+                <Button x:Name="btnRightBrace" Content=")" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RenderTransformOrigin="0.545,0.469" FontSize="26.667" Height="100" Width="100" Grid.Row="3" Grid.Column="4" BorderBrush="Black" Click="btnRightBrace_Click"/>
+            </Grid>
+            <TextBlock x:Name="textBlockLastInput" HorizontalAlignment="Left" Height="59" Margin="640,161,-1078,-200" TextWrapping="Wrap" VerticalAlignment="Top" Width="500" FontFamily="Consolas" FontSize="48" TextAlignment="Right"/>
+
+        </RelativePanel>
+
+        <RelativePanel x:Name="Small" Visibility="Collapsed" Background="#FFC97575">
+            <Button 
+                x:Name="updateButtonSmall"
+                Content="Update" 
+                HorizontalAlignment="Left"
+                Height="48" 
+                Margin="132,136,0,0" 
+                VerticalAlignment="Top" 
+                Width="156"/>
+            <TextBlock
+                x:Name="txtUserDataSmall" 
+                HorizontalAlignment="Left" 
+                Height="48" 
+                Margin="364,136,0,0" 
+                TextWrapping="Wrap" 
+                VerticalAlignment="Top"
+                Width="148"
+                ToolTipService.ToolTip="This is a text block"
+                Text="{Binding Text, ElementName=txtBoxUserDataSmall}" />
+            <TextBox
+                x:Name="txtBoxUserDataSmall"
+                HorizontalAlignment="Left"
+                Height="32" 
+                Margin="132,60,0,0" 
+                TextWrapping="Wrap" 
+                Text=""
+                VerticalAlignment="Top" 
+                Width="380" 
+                PlaceholderText="Enter something"/>
+        </RelativePanel>
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="FullScreen_Layout">
+                    <!-- The default properties are set in the XAML. -->
+                </VisualState>
+                <VisualState x:Name="Small_Layout">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="FullScreen" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Small" Storyboard.TargetProperty="Visibility">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </Grid>
+</Page>
